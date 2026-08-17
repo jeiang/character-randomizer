@@ -1,0 +1,375 @@
+[
+  {
+    "name": "Adam Warlock",
+    "slug": "adam-warlock",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Angela",
+    "slug": "angela",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Black Cat",
+    "slug": "black-cat",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Black Panther",
+    "slug": "black-panther",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Black Widow",
+    "slug": "black-widow",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Blade",
+    "slug": "blade",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Captain America",
+    "slug": "captain-america",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Cloak&Dagger",
+    "slug": "cloak-dagger",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Cyclops",
+    "slug": "cyclops",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Daredevil",
+    "slug": "daredevil",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Deadpool",
+    "slug": "deadpool",
+    "roles": [
+      "vanguard",
+      "duelist",
+      "strategist"
+    ]
+  },
+  {
+    "name": "Devil Dinosaur",
+    "slug": "devil-dinosaur",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Doctor Strange",
+    "slug": "doctor-strange",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Elsa Bloodstone",
+    "slug": "elsa-bloodstone",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Emma Frost",
+    "slug": "emma-frost",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Gambit",
+    "slug": "gambit",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Groot",
+    "slug": "groot",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Hawkeye",
+    "slug": "hawkeye",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Hela",
+    "slug": "hela",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Hulk",
+    "slug": "hulk",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Human Torch",
+    "slug": "human-torch",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Invisible Woman",
+    "slug": "invisible-woman",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Iron Fist",
+    "slug": "iron-fist",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Iron Man",
+    "slug": "iron-man",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Jeff The Land Shark",
+    "slug": "jeff-the-land-shark",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Jubilee",
+    "slug": "jubilee",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Loki",
+    "slug": "loki",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Luna Snow",
+    "slug": "luna-snow",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Magik",
+    "slug": "magik",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Magneto",
+    "slug": "magneto",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Mantis",
+    "slug": "mantis",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Mister Fantastic",
+    "slug": "mister-fantastic",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Moon Knight",
+    "slug": "moon-knight",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Namor",
+    "slug": "namor",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Peni Parker",
+    "slug": "peni-parker",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Phoenix",
+    "slug": "phoenix",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Psylocke",
+    "slug": "psylocke",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Rocket Raccoon",
+    "slug": "rocket-raccoon",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Rogue",
+    "slug": "rogue",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Scarlet Witch",
+    "slug": "scarlet-witch",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Spider-Man",
+    "slug": "spider-man",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Squirrel Girl",
+    "slug": "squirrel-girl",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Star-Lord",
+    "slug": "star-lord",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Storm",
+    "slug": "storm",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "The Hood",
+    "slug": "the-hood",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "The Punisher",
+    "slug": "the-punisher",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "The Thing",
+    "slug": "the-thing",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Thor",
+    "slug": "thor",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "Ultron",
+    "slug": "ultron",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Venom",
+    "slug": "venom",
+    "roles": [
+      "vanguard"
+    ]
+  },
+  {
+    "name": "White Fox",
+    "slug": "white-fox",
+    "roles": [
+      "strategist"
+    ]
+  },
+  {
+    "name": "Winter Soldier",
+    "slug": "winter-soldier",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
+    "name": "Wolverine",
+    "slug": "wolverine",
+    "roles": [
+      "duelist"
+    ]
+  }
+]
