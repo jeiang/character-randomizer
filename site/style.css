@@ -1,0 +1,146 @@
+:root {
+  --bg: #14151c;
+  --panel: #1e2029;
+  --card: #262936;
+  --text: #e8e8ee;
+  --muted: #9a9db0;
+  --vanguard: #4f9cf5;
+  --duelist: #f0564f;
+  --strategist: #57c96b;
+  --flex: #c78bf0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+h1 { font-size: 1.3rem; margin: 0; }
+
+button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid #3a3d4d;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover { border-color: var(--muted); }
+#roll { background: var(--duelist); border-color: var(--duelist); font-weight: 600; }
+
+main { padding: 0 1.5rem 2rem; }
+
+.hint { color: var(--muted); font-size: 0.85rem; }
+
+/* teams */
+#teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.team {
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.team h2 { margin: 0 0 0.5rem; font-size: 1rem; }
+
+.counters { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.counters label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+.counters input {
+  width: 3rem;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid #3a3d4d;
+  border-radius: 4px;
+  padding: 0.25rem;
+  font-size: 1rem;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  min-height: 1rem;
+}
+
+.slot {
+  width: 110px;
+  background: var(--card);
+  border-radius: 8px;
+  border-top: 3px solid var(--muted);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+.slot img { width: 100%; height: auto; border-radius: 4px; }
+.slot .name { font-size: 0.8rem; font-weight: 600; text-align: center; }
+.slot .role { font-size: 0.7rem; color: var(--muted); text-transform: capitalize; }
+.slot .actions { display: flex; gap: 0.25rem; }
+.slot .actions button { padding: 0.15rem 0.4rem; font-size: 0.8rem; }
+.slot.empty { justify-content: center; min-height: 140px; border-style: dashed; }
+.slot .placeholder { font-size: 2rem; color: var(--muted); }
+
+.slot.vanguard { border-top-color: var(--vanguard); }
+.slot.duelist { border-top-color: var(--duelist); }
+.slot.strategist { border-top-color: var(--strategist); }
+.slot.flex { border-top-color: var(--flex); }
+
+/* hero grid */
+#grid h3 {
+  text-transform: capitalize;
+  font-size: 0.95rem;
+  margin: 1.25rem 0 0.5rem;
+}
+#grid h3.vanguard { color: var(--vanguard); }
+#grid h3.duelist { color: var(--duelist); }
+#grid h3.strategist { color: var(--strategist); }
+#grid h3.flex { color: var(--flex); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 0.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+.card img { width: 100%; height: auto; border-radius: 4px; cursor: pointer; }
+.card .name { font-size: 0.7rem; }
+.card .pins { display: flex; gap: 0.25rem; }
+.card .pins button { padding: 0.1rem 0.5rem; font-size: 0.75rem; }
+.card.banned img { filter: grayscale(1) brightness(0.4); }
+.card.banned .name { color: var(--muted); text-decoration: line-through; }
