@@ -1,146 +1,189 @@
-:root {
-  --bg: #14151c;
-  --panel: #1e2029;
-  --card: #262936;
-  --text: #e8e8ee;
-  --muted: #9a9db0;
-  --vanguard: #4f9cf5;
-  --duelist: #f0564f;
-  --strategist: #57c96b;
-  --flex: #c78bf0;
-}
+/* Rivals Roulette — design tokens from the handoff prototype. No border-radius anywhere;
+   parallelogram/notched clip-paths are the signature shape language. */
 
-* { box-sizing: border-box; }
-
+html, body { margin: 0; padding: 0; min-height: 100%; background: #c4c9dc; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, sans-serif;
+  background:
+    linear-gradient(112deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 28%, rgba(255,255,255,0) 28.2%),
+    linear-gradient(292deg, rgba(23,26,36,0.10) 0%, rgba(23,26,36,0.10) 18%, rgba(23,26,36,0) 18.2%),
+    linear-gradient(112deg, rgba(23,26,36,0) 45%, rgba(23,26,36,0.06) 45.2%, rgba(23,26,36,0.06) 70%, rgba(23,26,36,0) 70.2%),
+    #c4c9dc;
+  background-attachment: fixed;
+  min-width: fit-content;
+  font-family: 'Rajdhani', sans-serif;
+  color: #171a24;
+  padding-bottom: 96px;
+}
+input::placeholder { color: #9aa1b8; }
+button { border: none; cursor: pointer; }
+
+/* top bar */
+.topbar { background: #14161f; height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.brand {
+  background: #f2c21b; color: #14161f;
+  font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 20px; letter-spacing: 0.5px;
+  padding: 6px 22px 6px 16px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+.tagline { color: #8a90a8; font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 2px; }
+.roster { color: #aeb6cc; font-weight: 700; font-size: 14px; letter-spacing: 1.5px; }
+
+.wrap { max-width: 1180px; margin: 26px auto 0; padding: 0 24px; }
+
+/* status strip */
+.status {
+  background: #171a24; color: #e8ebf5; display: flex; align-items: center; gap: 26px; padding: 12px 20px;
+  font-family: 'Chakra Petch', sans-serif; font-size: 13px; letter-spacing: 1px; flex-wrap: wrap;
+}
+.status .sep { width: 1px; height: 16px; background: #3a4258; }
+.status .lbl { color: #8a90a8; font-weight: 600; }
+.status .val { font-weight: 700; }
+
+/* team columns */
+.teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(470px, 1fr)); gap: 26px; margin-top: 22px; }
+.team-head {
+  background: #1c2030; height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px 0 16px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.team-name { color: #ffffff; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 16px; letter-spacing: 1.5px; }
+.roll-team {
+  background: #f2c21b; color: #171a24; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px;
+  padding: 7px 16px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.rows { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+
+/* player row */
+.row { background: rgba(255,255,255,0.92); display: flex; align-items: center; min-height: 72px; border-left: 3px solid #1c2030; }
+.icon { position: relative; width: 64px; height: 64px; margin: 4px 0 4px 4px; flex: 0 0 auto; background: #232838; display: flex; align-items: center; justify-content: center; }
+.icon .initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #6b7280; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 20px; }
+.icon .head { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.icon .q { color: #4a5169; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 24px; }
+.mid { flex: 1; min-width: 0; padding: 6px 12px; display: flex; flex-direction: column; gap: 2px; }
+.pname {
+  background: transparent; border: none; outline: none; padding: 0; width: 100%;
+  font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: #707994;
+}
+.hero-line { display: flex; align-items: center; gap: 10px; }
+.hero-name { font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 18px; color: #171a24; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.role-tag {
+  font-weight: 700; font-size: 11px; letter-spacing: 1px; color: #ffffff; padding: 1px 9px; flex: 0 0 auto;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+.awaiting { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 1px; color: #9aa1b8; }
+
+/* role colors */
+.rc-V { background: #3d7dc4; }
+.rc-D { background: #c44848; }
+.rc-S { background: #2f9e72; }
+.rc-M { background: #8a5bbf; }
+
+/* row controls */
+.controls { display: flex; align-items: center; gap: 6px; padding-right: 10px; flex: 0 0 auto; }
+.ctl { background: #e3e6f0; height: 26px; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 1px; color: #3a4258; padding: 0 8px; }
+.controls select.ctl { outline: none; border: none; max-width: 66px; }
+.ctl.glyph { width: 30px; padding: 0; font-family: 'Rajdhani', sans-serif; font-size: 15px; line-height: 1; letter-spacing: 0; }
+.ctl.lock { color: #707994; }
+.ctl.lock.locked { background: #f2c21b; color: #171a24; }
+.ctl.ban { color: #a03040; }
+.ctl.rm { background: transparent; width: 24px; padding: 0; font-size: 15px; color: #9aa1b8; line-height: 1; letter-spacing: 0; }
+
+.add-player {
+  width: 100%; min-height: 72px; background: rgba(23,26,36,0.08); border: 1px dashed #8a90a8;
+  font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #707994;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
+/* action row */
+.actions { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+.roll-all {
+  background: #f2c21b; color: #171a24; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 18px; letter-spacing: 1.5px;
+  padding: 14px 46px; clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%); box-shadow: 0 4px 0 rgba(23,26,36,0.35);
+}
+.settings-btn {
+  background: #1c2030; color: #e8ebf5; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px;
+  padding: 11px 24px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 }
 
-h1 { font-size: 1.3rem; margin: 0; }
-
-button {
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid #3a3d4d;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-button:hover { border-color: var(--muted); }
-#roll { background: var(--duelist); border-color: var(--duelist); font-weight: 600; }
-
-main { padding: 0 1.5rem 2rem; }
-
-.hint { color: var(--muted); font-size: 0.85rem; }
-
-/* teams */
-#teams {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
+/* toast */
+.toast {
+  position: fixed; top: 74px; left: 50%; transform: translateX(-50%); z-index: 90;
+  background: #171a24; color: #f2c21b; border: 1px solid #f2c21b;
+  font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px; padding: 10px 22px;
 }
 
-.team {
-  background: var(--panel);
-  border-radius: 10px;
-  padding: 1rem;
+/* drawers */
+.overlay { position: fixed; inset: 0; background: rgba(10,12,18,0.5); z-index: 60; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; max-width: 92vw; background: #171a24; z-index: 70;
+  display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,0.4);
 }
-.team h2 { margin: 0 0 0.5rem; font-size: 1rem; }
+.drawer.settings { width: 380px; overflow-y: auto; }
+.drawer.excl { width: 430px; }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px; }
+.drawer-title { color: #ffffff; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 18px; letter-spacing: 1.5px; }
+.drawer-close { background: transparent; color: #8a90a8; font-size: 22px; line-height: 1; }
+.drawer-note { padding: 0 20px 10px; color: #8a90a8; font-weight: 600; font-size: 13px; letter-spacing: 0.5px; }
 
-.counters { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.counters label {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.8rem;
-  text-transform: capitalize;
+.seg { display: flex; gap: 6px; }
+.seg-btn { flex: 1; background: #232838; color: #aeb6cc; padding: 8px 4px; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1px; }
+.seg-btn.active { background: #f2c21b; color: #171a24; }
+
+.dark-input { width: 100%; box-sizing: border-box; background: #232838; color: #e8ebf5; border: 1px solid #3a4258; outline: none; font-weight: 600; font-size: 14px; padding: 8px 10px; }
+select.dark-input { cursor: pointer; }
+
+.chips-scroll { flex: 1; overflow-y: auto; padding: 0 20px 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  display: flex; align-items: center; gap: 7px; padding: 6px 10px; border: 1px solid #3a4258; background: #232838; color: #dfe4f2;
+  font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.3px;
 }
-.counters input {
-  width: 3rem;
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid #3a3d4d;
-  border-radius: 4px;
-  padding: 0.25rem;
-  font-size: 1rem;
-}
+.chip .dot { width: 9px; height: 9px; transform: rotate(45deg); flex: 0 0 auto; display: inline-block; }
+.chip.excluded { background: #3a2026; border-color: #7a3540; color: #ff9090; text-decoration: line-through; }
 
-.slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  min-height: 1rem;
-}
+.drawer-foot { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-top: 1px solid #2a3044; }
+.excl-count { color: #aeb6cc; font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 1px; }
+.outline-btn { background: transparent; border: 1px solid #707994; color: #aeb6cc; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1px; padding: 6px 12px; }
 
-.slot {
-  width: 110px;
-  background: var(--card);
-  border-radius: 8px;
-  border-top: 3px solid var(--muted);
-  padding: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  position: relative;
-}
-.slot img { width: 100%; height: auto; border-radius: 4px; }
-.slot .name { font-size: 0.8rem; font-weight: 600; text-align: center; }
-.slot .role { font-size: 0.7rem; color: var(--muted); text-transform: capitalize; }
-.slot .actions { display: flex; gap: 0.25rem; }
-.slot .actions button { padding: 0.15rem 0.4rem; font-size: 0.8rem; }
-.slot.empty { justify-content: center; min-height: 140px; border-style: dashed; }
-.slot .placeholder { font-size: 2rem; color: var(--muted); }
-
-.slot.vanguard { border-top-color: var(--vanguard); }
-.slot.duelist { border-top-color: var(--duelist); }
-.slot.strategist { border-top-color: var(--strategist); }
-.slot.flex { border-top-color: var(--flex); }
-
-/* hero grid */
-#grid h3 {
-  text-transform: capitalize;
-  font-size: 0.95rem;
-  margin: 1.25rem 0 0.5rem;
-}
-#grid h3.vanguard { color: var(--vanguard); }
-#grid h3.duelist { color: var(--duelist); }
-#grid h3.strategist { color: var(--strategist); }
-#grid h3.flex { color: var(--flex); }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-  gap: 0.5rem;
+/* settings drawer sections */
+.secs { display: flex; flex-direction: column; gap: 22px; padding: 6px 20px 20px; }
+.sec { display: flex; flex-direction: column; gap: 8px; }
+.sec-title { color: #8a90a8; font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 2px; }
+.sec .hint { color: #707994; font-weight: 600; font-size: 13px; }
+.ratio { display: flex; gap: 8px; }
+.ratio > div { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.ratio-label { color: #707994; font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 1px; }
+.ratio input { width: 100%; box-sizing: border-box; background: #232838; color: #e8ebf5; border: 1px solid #3a4258; outline: none; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 15px; padding: 7px 8px; text-align: center; }
+.toggle-btn { padding: 10px 14px; text-align: left; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px; background: #232838; color: #aeb6cc; }
+.toggle-btn.active { background: #f2c21b; color: #171a24; }
+.manage-btn { background: #232838; border: 1px solid #3a4258; color: #e8ebf5; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px; padding: 10px 14px; text-align: left; }
+.outline-btn.wide { font-size: 12px; padding: 10px 14px; text-align: left; }
+.sec-divider { border-top: 1px solid #2a3044; padding-top: 18px; }
+.instructions-btn {
+  width: 100%; background: #f2c21b; color: #171a24; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px;
+  padding: 11px 14px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 }
 
-.card {
-  background: var(--card);
-  border-radius: 8px;
-  padding: 0.35rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-  text-align: center;
+/* help modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(10,12,18,0.65); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.modal { background: #171a24; color: #e8ebf5; width: 100%; max-width: 520px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border-top: 3px solid #f2c21b; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 6px; }
+.modal-title { color: #ffffff; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 20px; letter-spacing: 1.5px; }
+.modal-chip {
+  background: #f2c21b; color: #171a24; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 12px; letter-spacing: 0.5px;
+  padding: 3px 12px 3px 9px; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 100%, 0 100%);
 }
-.card img { width: 100%; height: auto; border-radius: 4px; cursor: pointer; }
-.card .name { font-size: 0.7rem; }
-.card .pins { display: flex; gap: 0.25rem; }
-.card .pins button { padding: 0.1rem 0.5rem; font-size: 0.75rem; }
-.card.banned img { filter: grayscale(1) brightness(0.4); }
-.card.banned .name { color: var(--muted); text-decoration: line-through; }
+.steps { display: flex; flex-direction: column; gap: 12px; padding: 14px 24px 20px; font-weight: 600; font-size: 15px; color: #cfd5e6; }
+.step { display: flex; gap: 12px; }
+.step .num { flex: 0 0 auto; color: #f2c21b; font-family: 'Chakra Petch', sans-serif; font-weight: 700; }
+.modal-foot { display: flex; justify-content: flex-end; padding: 0 24px 20px; }
+.gotit {
+  background: #f2c21b; color: #171a24; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; font-size: 14px; letter-spacing: 1px;
+  padding: 10px 30px; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
+/* footer */
+.footer {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  background: rgba(20,22,31,0.92); color: #8a90a8; text-align: center;
+  font-weight: 600; font-size: 12px; letter-spacing: 1.5px; padding: 8px 16px;
+}
