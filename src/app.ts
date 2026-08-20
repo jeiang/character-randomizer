@@ -28,6 +28,9 @@ interface RawHero {
 
 const ROLE_CODE: Record<string, Role> = { vanguard: "V", duelist: "D", strategist: "S" };
 const raw: RawHero[] = await (await fetch("heroes.json")).json();
+const meta: { season?: string } = await fetch("meta.json")
+  .then((r) => (r.ok ? r.json() : {}))
+  .catch(() => ({}));
 const heroes: Hero[] = raw.map((h) => ({
   id: h.slug,
   name: h.name,
@@ -304,7 +307,8 @@ function roleModeShort(): string {
 }
 
 function renderStatus(): void {
-  document.getElementById("roster-info")!.textContent = `S9.5 ROSTER · ${heroes.length} HEROES`;
+  document.getElementById("roster-info")!.textContent =
+    (meta.season ? `S${meta.season} ROSTER · ` : "") + `${heroes.length} HEROES`;
   document.getElementById("status-lobby")!.textContent = `${state.players.filter((p) => p.active).length} / 12`;
   document.getElementById("status-roles")!.textContent = roleModeShort();
   document.getElementById("status-excl")!.textContent = String(totalExcl());
