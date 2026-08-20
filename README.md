@@ -7,7 +7,7 @@ V-D-S ratio), unique-per-team, and hero exclusions scoped game-wide, per team, o
 player. Settings and the last roll persist in localStorage.
 
 Hero data (`site/heroes.json` + portraits in `site/img/`) is scraped from the official
-heroes page and committed. A weekly GitHub Actions run refreshes it; manually:
+heroes page and committed. A weekly GitHub Actions run opens a refresh PR; manually:
 
 ```bash
 nix run .#update

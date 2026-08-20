@@ -7,22 +7,21 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - run: node scripts/update.ts
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/heroes.json site/img
-          if ! git diff --cached --quiet; then
-            git commit -m "chore(data): refresh hero data"
-            git push
-          fi
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: site/
+          commit-message: "chore(data): refresh hero data"
+          branch: ci/update-heroes
+          title: "chore(data): refresh hero data"
+          body: Automated weekly hero data refresh from `scripts/update.ts`.
