@@ -61,3 +61,16 @@ heroes.sort((a, b) => a.name.localeCompare(b.name));
 const json = heroes.map(({ name, slug, roles }) => ({ name, slug, roles }));
 writeFileSync("site/heroes.json", JSON.stringify(json, null, 2) + "\n");
 console.log(`wrote ${heroes.length} heroes`);
+
+// season label for the site header: highest "Season N" mentioned in the homepage news feed.
+// cosmetic, so a failed scrape only warns and keeps the committed site/meta.json
+try {
+  const home = await (await fetch("https://www.marvelrivals.com/")).text();
+  const seasons = [...home.matchAll(/Season (\d+(?:\.\d+)?)/g)].map((m) => parseFloat(m[1]));
+  if (!seasons.length) throw new Error("no season found on homepage");
+  const season = String(Math.max(...seasons));
+  writeFileSync("site/meta.json", JSON.stringify({ season }) + "\n");
+  console.log(`season ${season}`);
+} catch (e) {
+  console.warn(`season scrape failed, keeping site/meta.json: ${e}`);
+}

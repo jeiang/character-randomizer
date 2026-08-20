@@ -1,9 +1,10 @@
-# Rivals Randomizer
+# Rivals Roulette
 
-Static web app that rolls random [Marvel Rivals](https://www.marvelrivals.com) teams.
-Set Vanguard / Duelist / Strategist / Flex counts per team (team size is the sum, up to 6),
-ban heroes from the pool, pin specific heroes to a team, re-roll single slots. Settings and
-the last roll persist in localStorage.
+Static web app that assigns random [Marvel Rivals](https://www.marvelrivals.com) heroes to
+two teams of up to 6 players. Per player: reroll (keeps role class), lock, ban, role
+preference, team swap. Role-composition limits (2-2-2, 2 Strat + 4 Flex, or a custom
+V-D-S ratio), unique-per-team, and hero exclusions scoped game-wide, per team, or per
+player. Settings and the last roll persist in localStorage.
 
 Hero data (`site/heroes.json` + portraits in `site/img/`) is scraped from the official
 heroes page and committed. A weekly GitHub Actions run refreshes it; manually:

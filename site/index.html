@@ -3,25 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rivals Randomizer</title>
+  <title>Rivals Roulette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,600;1,700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Marvel Rivals Team Randomizer</h1>
-    <div class="buttons">
-      <button id="roll">Randomize</button>
-      <button id="clear">Clear</button>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">RIVALS ROULETTE</div>
+      <div class="tagline">RANDOM HERO ASSIGNMENT</div>
     </div>
+    <div class="roster" id="roster-info"></div>
   </header>
-  <main>
-    <section id="teams"></section>
-    <p class="hint">
-      Set role counts per team (team size is the sum). Click a portrait to ban a hero from the pool;
-      1 / 2 pins them to a team.
-    </p>
-    <section id="grid"></section>
+  <main class="wrap">
+    <div class="status">
+      <div><span class="lbl">MODE:</span> <span class="val">RANDOM DRAFT</span></div>
+      <div class="sep"></div>
+      <div><span class="lbl">LOBBY:</span> <span class="val" id="status-lobby"></span></div>
+      <div class="sep"></div>
+      <div><span class="lbl">ROLE LIMIT:</span> <span class="val" id="status-roles"></span></div>
+      <div class="sep"></div>
+      <div><span class="lbl">EXCLUSIONS:</span> <span class="val" id="status-excl"></span></div>
+    </div>
+    <div class="teams">
+      <div>
+        <div class="team-head">
+          <div class="team-name">TEAM 1</div>
+          <button class="roll-team" id="roll-a">ROLL TEAM</button>
+        </div>
+        <div class="rows" id="rows-a"></div>
+      </div>
+      <div>
+        <div class="team-head">
+          <div class="team-name">TEAM 2</div>
+          <button class="roll-team" id="roll-b">ROLL TEAM</button>
+        </div>
+        <div class="rows" id="rows-b"></div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="roll-all" id="roll-all">ROLL ALL TEAMS</button>
+      <button class="settings-btn" id="open-settings">SETTINGS</button>
+    </div>
   </main>
+  <div id="toast" class="toast" hidden></div>
+  <div id="overlay-root"></div>
+  <footer class="footer">FAN-MADE TOOL &middot; NOT ASSOCIATED WITH OR ENDORSED BY NETEASE GAMES OR MARVEL &middot; HERO IMAGES &copy; THEIR RESPECTIVE OWNERS</footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>
