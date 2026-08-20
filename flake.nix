@@ -16,7 +16,27 @@
           src = ./.;
           nativeBuildInputs = [ pkgs.typescript ];
           buildPhase = "tsc";
-          installPhase = "cp -r site $out";
+          # Fingerprint mutable assets so CDN/browser caches can never pair a
+          # fresh index.html with a stale script or stylesheet.
+          installPhase = ''
+            cp -r site $out
+            chmod -R u+w $out
+
+            fingerprint() {
+              local file=$1 hash renamed
+              hash=$(sha256sum "$out/$file" | cut -c1-8)
+              renamed="''${file%.*}.$hash.''${file##*.}"
+              mv "$out/$file" "$out/$renamed"
+              echo "$renamed"
+            }
+
+            roll=$(fingerprint roll.js)
+            sed -i "s|\./roll\.js|./$roll|" $out/app.js
+
+            app=$(fingerprint app.js)
+            css=$(fingerprint style.css)
+            sed -i "s|app\.js|$app|; s|style\.css|$css|" $out/index.html
+          '';
         };
       });
 
