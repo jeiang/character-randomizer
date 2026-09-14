@@ -26,17 +26,8 @@ const heroes: Hero[] = [];
 for (const [, attrs, body] of html.matchAll(/<a\b([^>]*\bdata-name="[^>]*)>(.*?)<\/a>/gs)) {
   const rawName = attrs.match(/data-name="([^"]+)"/)?.[1];
   const tag = attrs.match(/data-tag="([^"]+)"/)?.[1];
-  const imgs = [...body.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
-
-  // upcoming-hero teasers reuse the card markup but link to a news post
-  // (data-url=".../YYYYMMDD/....html") and carry no head/portrait images.
-  // the hero isn't playable yet, so skip it rather than fail the run.
-  const newsUrl = attrs.match(/data-url="([^"]+)"/)?.[1];
-  if (imgs.length < 2 && newsUrl && /\/\d{8}\//.test(newsUrl)) {
-    console.warn(`skipping teaser for ${rawName ?? "unknown"}: ${newsUrl}`);
-    continue;
-  }
-
+  // the site flips between src="..." and src='...' between deploys; accept both
+  const imgs = [...body.matchAll(/src=["']([^"']+)["']/g)].map((m) => m[1]);
   if (!rawName || !tag || imgs.length < 2) throw new Error(`bad hero block: ${attrs}`);
 
   const roles = tag.toLowerCase().split(/\s+/).filter((r) => ROLES.includes(r));
