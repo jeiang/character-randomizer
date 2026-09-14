@@ -114,6 +114,13 @@
     ]
   },
   {
+    "name": "Gorr the God Butcher",
+    "slug": "gorr-the-god-butcher",
+    "roles": [
+      "duelist"
+    ]
+  },
+  {
     "name": "Groot",
     "slug": "groot",
     "roles": [
