@@ -5,7 +5,8 @@
     "moduleResolution": "bundler",
     "lib": ["es2022", "dom", "dom.iterable"],
     "strict": true,
-    "outDir": "site"
+    "outDir": "site",
+    "rootDir": "src"
   },
   "include": ["src"]
 }
