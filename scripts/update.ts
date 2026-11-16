@@ -23,15 +23,23 @@ interface Hero {
 }
 
 const heroes: Hero[] = [];
+// hero grid: anchors linking to ./<id>/index.html, images are head then portrait.
+// the heroNewsList anchors also carry data-name but have data-tag and placeholder images.
 for (const [, attrs, body] of html.matchAll(/<a\b([^>]*\bdata-name="[^>]*)>(.*?)<\/a>/gs)) {
-  const rawName = attrs.match(/data-name="([^"]+)"/)?.[1];
-  const tag = attrs.match(/data-tag="([^"]+)"/)?.[1];
+  if (attrs.includes("data-tag=")) continue;
+  const rawName = attrs.match(/data-name="([^"]+)"/)?.[1]?.replaceAll("&amp;", "&");
+  const id = attrs.match(/data-id="([^"]+)"/)?.[1];
   // the site flips between src="..." and src='...' between deploys; accept both
   const imgs = [...body.matchAll(/src=["']([^"']+)["']/g)].map((m) => m[1]);
-  if (!rawName || !tag || imgs.length < 2) throw new Error(`bad hero block: ${attrs}`);
+  if (!rawName || !id || imgs.length < 2) throw new Error(`bad hero block: ${attrs}`);
 
-  const roles = tag.toLowerCase().split(/\s+/).filter((r) => ROLES.includes(r));
-  if (!roles.length) throw new Error(`no known role for ${rawName}: ${tag}`);
+  // data-tag on the index page holds only one role; the hero's own page lists all of them
+  const page = `https://www.marvelrivals.com/heroes/${id}/`;
+  const detail = await fetch(page);
+  if (!detail.ok) throw new Error(`GET ${page} -> ${detail.status}`);
+  const jobs = (await detail.text()).match(/window\.__HERO_DATA__ = \{.*?"jobs":(\[[^\]]*\])/)?.[1];
+  const roles = (jobs ? (JSON.parse(jobs) as string[]) : []).filter((r) => ROLES.includes(r));
+  if (!roles.length) throw new Error(`no known role for ${rawName}: ${page}`);
 
   // data-name casing is inconsistent ("IRON MAN", "The Hood"); title-case the all-caps ones
   const name =
